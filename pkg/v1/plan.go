@@ -134,12 +134,12 @@ func (p *ExecutionPlan) WaitWithChan(ctx context.Context) <-chan struct{} {
 			go func(innerKey string, innerOp ExitOperation) {
 				defer wg.Done()
 
-				log.Printf("cleaning up: %s", innerKey)
+				log.Printf("disposing: %s", innerKey)
 				if err := innerOp(ctx); err != nil {
-					log.Printf("%s: clean up failed: %s", innerKey, err.Error())
+					log.Printf("%s: dispose failed: %s", innerKey, err.Error())
 					return
 				}
-				log.Printf("%s was shutdown gracefully", innerKey)
+				log.Printf("%s was disposed gracefully", innerKey)
 			}(key, op)
 		}
 
@@ -149,10 +149,10 @@ func (p *ExecutionPlan) WaitWithChan(ctx context.Context) <-chan struct{} {
 		// Final cleanup callback
 		if p.finalCallback != nil {
 			if err := p.finalCallback(ctx); err != nil {
-				log.Printf("%s: clean up failed: %s", "final", err.Error())
+				log.Printf("final: dispose failed: %s", err.Error())
 				return
 			}
-			log.Printf("%s was shutdown gracefully", "final")
+			log.Println("final was disposed gracefully")
 		}
 
 		close(sigChannel)
