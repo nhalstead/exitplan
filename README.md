@@ -11,7 +11,9 @@ This repo has the example in it already using the [cobra package](https://github
 
 Clone down the repo and build it.
 
-Upon running executing `expitplan text`, an HTTP server on [http://localhost:8855/readyz](http://localhost:8855/readyz) will be running.
+Upon running executing `expitplan test`, an HTTP server on port 8855 will be running.
+
+Browse to [http://localhost:8855/readyz](http://localhost:8855/readyz) to check the status!
 
 ---
 
