@@ -45,7 +45,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	exitplan "github.com/nhalstead/exitplan/pkg/v1"
+	"github.com/nhalstead/exitplan/pkg/v1"
 )
 
 func main() {
