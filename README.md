@@ -29,12 +29,6 @@ Lastly before the program exists it makes one last synchronous call to the Final
 
 ## Usage
 
-### Import
-```text
-exitplan "github.com/nhalstead/exitplan/pkg/v1"
-```
-
-### Usage Example
 ```go
 package main
 
