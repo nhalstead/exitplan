@@ -60,6 +60,15 @@ func (p *ExecutionPlan) Add(name string, handler ExitOperation) *ExecutionPlan {
 	return p
 }
 
+func (p *ExecutionPlan) Wait() {
+	p.WaitContext(context.Background())
+}
+
+// WaitContext will wait until the program gets an exit signal and all handlers have succeeded.
+// If used on the main thread, this will allow it to die
+func (p *ExecutionPlan) WaitContext(ctx context.Context) {
+	<-p.WaitWithChan(ctx)
+}
 
 func (p *ExecutionPlan) WaitWithChan(ctx context.Context) <-chan struct{} {
 
