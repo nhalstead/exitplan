@@ -3,6 +3,7 @@ package v1
 import (
 	"context"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"sync"
@@ -73,6 +74,18 @@ func (p *ExecutionPlan) Finally(handler ExitOperation) *ExecutionPlan {
 
 func (p *ExecutionPlan) Wait() {
 	p.WaitContext(context.Background())
+}
+
+// HandlerFunc is used on the HTTP Server Side to support a RESTful way of ready state.
+// See https://kubernetes.io/docs/reference/using-api/health-checks/ for more information
+func (p *ExecutionPlan) HandlerFunc(w http.ResponseWriter, r *http.Request) {
+	if p.IsTerminating() {
+		w.WriteHeader(http.StatusServiceUnavailable)
+		_, _ = w.Write([]byte("terminating"))
+	} else {
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte("ok"))
+	}
 }
 
 // WaitContext will wait until the program gets an exit signal and all handlers have succeeded.
