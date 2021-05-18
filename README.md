@@ -86,4 +86,4 @@ func main() {
 
 [Stackoverflow: Testing graceful shutdown on an HTTP server during a Kubernetes rollout](https://stackoverflow.com/a/58752566/5779200)
 
-[Graceful shutdown and Kubernetes readiness / liveness checks for any Node.js HTTP applications](https://github.com/godaddy/terminus) by GoDaddy Dev Team
+[terminus *Graceful shutdown and Kubernetes readiness / liveness checks for any Node.js HTTP applications*](https://github.com/godaddy/terminus) by GoDaddy Dev Team
