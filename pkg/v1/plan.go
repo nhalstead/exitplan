@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// ExitOperation is a clean up function on shutting down
 type ExitOperation func(ctx context.Context) error
 
 type ExecutionPlan struct {
@@ -17,9 +18,12 @@ type ExecutionPlan struct {
 	Timeout       time.Duration
 	GradePeriod   time.Duration
 	callbacks     map[string]ExitOperation
+	finalCallback ExitOperation
 	isTerminating bool
 }
 
+// NewPlan will create a new ExecutionPlan with a default
+//  GradePeriod of 5 seconds and Timeout of 25 seconds
 func NewPlan() *ExecutionPlan {
 	return NewPlanWithTimer(5*time.Second, 25*time.Second)
 }
@@ -56,6 +60,13 @@ func (p *ExecutionPlan) AddMany(many map[string]ExitOperation) *ExecutionPlan {
 func (p *ExecutionPlan) Add(name string, handler ExitOperation) *ExecutionPlan {
 
 	p.callbacks[name] = handler
+
+	return p
+}
+
+func (p *ExecutionPlan) Finally(handler ExitOperation) *ExecutionPlan {
+
+	p.finalCallback = handler
 
 	return p
 }
@@ -121,6 +132,15 @@ func (p *ExecutionPlan) WaitWithChan(ctx context.Context) <-chan struct{} {
 
 		// Wait for all of the Exit Operations to complete their exit operation.
 		wg.Wait()
+
+		// Final cleanup callback
+		if p.finalCallback != nil {
+			if err := p.finalCallback(ctx); err != nil {
+				log.Printf("%s: clean up failed: %s", "final", err.Error())
+				return
+			}
+			log.Printf("%s was shutdown gracefully", "final")
+		}
 
 		close(sigChannel)
 	}()
