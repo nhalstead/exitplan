@@ -1,5 +1,11 @@
 # Exit Plan
 
+ 
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/nhalstead/exitplan/)](https://goreportcard.com/report/github.com/nhalstead/exitplan/)
+[![GoDoc](https://godoc.org/github.com/nhalstead/exitplan/?status.svg)](https://godoc.org/github.com/nhalstead/exitplan/)
+
+
 Simple go package to help with the shutdown process within a go program by integrating with SIGINT and SIGTERM.
 The purpose is to be used with a container orchestration software like kubernetes where heath checks are done on the pod.
 
