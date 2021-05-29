@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -33,7 +32,7 @@ func main() {
 	fmt.Println("Server Running")
 	fmt.Println("Goto http://localhost:8855/readyz")
 
-	plan.Finally(func (ctx context.Context) error {
+	plan.Finally(func(ctx context.Context) error {
 		// Do some final cool stuff before death
 		fmt.Println("final callback made")
 		return nil

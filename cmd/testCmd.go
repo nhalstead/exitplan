@@ -13,13 +13,13 @@ import (
 )
 
 var (
-	healthChecks bool
+	healthChecks     bool
 	httpChecksServer int64
 
 	testCmd = &cobra.Command{
 		Use:   "test",
 		Short: "Test the usage of the signals.",
-		Long: "Runs the code as normal in conjunction with cobra Command with the usage of SIGINT and SIGTERM.",
+		Long:  "Runs the code as normal in conjunction with cobra Command with the usage of SIGINT and SIGTERM.",
 		Run: func(cmd *cobra.Command, args []string) {
 
 			m := mux.NewRouter()
@@ -51,7 +51,7 @@ var (
 			fmt.Println("Server Running")
 			fmt.Println("Goto http://localhost:" + strconv.FormatInt(httpChecksServer, 10) + "/readyz")
 
-			plan.Finally(func (ctx context.Context) error {
+			plan.Finally(func(ctx context.Context) error {
 				// Do some final cool stuff before death
 				fmt.Println("final callback made")
 				return nil

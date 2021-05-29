@@ -8,7 +8,7 @@ var (
 	rootCmd = &cobra.Command{
 		Use:   "exitplan",
 		Short: "Example usage of exit plan with cobra",
-		Long: "Testing of exit plan being used with cobra responding to SIGINT, SIGTERM, SIGHUP.",
+		Long:  "Testing of exit plan being used with cobra responding to SIGINT, SIGTERM, SIGHUP.",
 	}
 )
 
