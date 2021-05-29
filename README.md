@@ -2,8 +2,8 @@
 
  
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/nhalstead/exitplan/)](https://goreportcard.com/report/github.com/nhalstead/exitplan/)
-[![GoDoc](https://godoc.org/github.com/nhalstead/exitplan/?status.svg)](https://godoc.org/github.com/nhalstead/exitplan/)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nhalstead/exitplan)](https://goreportcard.com/report/github.com/nhalstead/exitplan)
+[![GoDoc](https://godoc.org/github.com/nhalstead/exitplan?status.svg)](https://godoc.org/github.com/nhalstead/exitplan)
 
 
 Simple go package to help with the shutdown process within a go program by integrating with SIGINT and SIGTERM.
