@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/nhalstead/exitplan/pkg/v1"
+	"github.com/nhalstead/exitplan"
 	"github.com/spf13/cobra"
 )
 

@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="go build github.com/nhalstead/exitplan" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+  <configuration default="false" name="go build github.com/nhalstead/exitplan/exitplan-test" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
     <module name="exitplan" />
     <working_directory value="$PROJECT_DIR$" />
     <go_parameters value="-i" />
     <parameters value="test" />
     <kind value="PACKAGE" />
-    <package value="github.com/nhalstead/exitplan" />
+    <package value="github.com/nhalstead/exitplan/exitplan-test" />
     <directory value="$PROJECT_DIR$" />
     <filePath value="$PROJECT_DIR$" />
     <method v="2" />
