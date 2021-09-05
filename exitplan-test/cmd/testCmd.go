@@ -56,7 +56,7 @@ var (
 				fmt.Println("final callback made")
 				return nil
 			})
-			plan.Wait()
+			plan.Wait(context.TODO())
 
 		},
 	}
