@@ -143,8 +143,6 @@ func (p *ExecutionPlan) Start(ctx context.Context) chan struct{} {
 			os.Exit(0)
 		})
 
-		defer timeoutFunc.Stop()
-
 		var wg sync.WaitGroup
 
 		// Execute exit operations async to allow for a faster shutdown process.
@@ -167,6 +165,9 @@ func (p *ExecutionPlan) Start(ctx context.Context) chan struct{} {
 		// Wait for all Exit Operations to complete their exit operation.
 		// If the timeoutFunc expires, kill the entire process.
 		wg.Wait()
+
+		// Stop the timeout function for os.Exit to allow the final callbacks to run.
+		timeoutFunc.Stop()
 
 		// Final cleanup callback
 		// Successfully cleaned up connections and exit operations
