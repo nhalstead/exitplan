@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/nhalstead/exitplan"
+	"github.com/nhalstead/exitplan/v1"
 )
 
 func main() {
@@ -37,6 +37,6 @@ func main() {
 		fmt.Println("final callback made")
 		return nil
 	})
-	plan.Wait()
+	plan.Wait(context.TODO())
 
 }

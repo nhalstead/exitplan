@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/nhalstead/exitplan"
+	"github.com/nhalstead/exitplan/v1"
 	"github.com/spf13/cobra"
 )
 
@@ -56,7 +56,7 @@ var (
 				fmt.Println("final callback made")
 				return nil
 			})
-			plan.Wait()
+			plan.Wait(context.TODO())
 
 		},
 	}
